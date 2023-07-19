@@ -55,8 +55,7 @@ query_list_to_tibble <- function(x, timestamp_format) {
       # extract "columns"
       series_columns <- purrr::map(series_ele$series, "columns") %>%
         purrr::map(unlist)
-       browser() 
-      # extract values
+       # extract values
       series_values <- purrr::map(series_ele$series, "values") %>%
         # transpose for faster data munging
         `if`(performance, timer(., "transpose data"), .) %>% 
@@ -79,7 +78,7 @@ query_list_to_tibble <- function(x, timestamp_format) {
                                     ~ as.POSIXct(. / div, 
                                                  origin = "1970-1-1",
                                                  tz = "GMT")) %>%
-                      tibble::as_tibble(., validate = FALSE))
+                      tibble::as_tibble(.))
 
       # is partial?
       series_partial <-
