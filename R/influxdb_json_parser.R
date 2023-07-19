@@ -55,7 +55,7 @@ query_list_to_tibble <- function(x, timestamp_format) {
       # extract "columns"
       series_columns <- purrr::map(series_ele$series, "columns") %>%
         purrr::map(unlist)
-        
+       browser() 
       # extract values
       series_values <- purrr::map(series_ele$series, "values") %>%
         # transpose for faster data munging
