@@ -51,7 +51,7 @@ query_list_to_tibble <- function(x, timestamp_format) {
       # extract "tags"
       series_tags <- purrr::map(series_ele$series, "tags") %>%
         purrr::map(tibble::as_tibble)
-        
+      browser()  
       # extract "columns"
       series_columns <- purrr::map(series_ele$series, "columns") %>%
         purrr::map(unlist)
@@ -79,7 +79,7 @@ query_list_to_tibble <- function(x, timestamp_format) {
                                                  origin = "1970-1-1",
                                                  tz = "GMT")) %>%
                       tibble::as_tibble(.))
-
+      browser()
       # is partial?
       series_partial <-
         ifelse(is.null(series_ele$partial), FALSE, TRUE)
@@ -90,7 +90,7 @@ query_list_to_tibble <- function(x, timestamp_format) {
                                series_tags,
                                series_values,
                                series_partial)
-       browser() 
+        
       # unnest list-columns if content is present (here: tags)
       series_tags_rows <- purrr::map_int(result$series_tags, nrow)
       
