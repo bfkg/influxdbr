@@ -90,7 +90,7 @@ query_list_to_tibble <- function(x, timestamp_format) {
                                series_tags,
                                series_values,
                                series_partial)
-        
+       browser() 
       # unnest list-columns if content is present (here: tags)
       series_tags_rows <- purrr::map_int(result$series_tags, nrow)
       
